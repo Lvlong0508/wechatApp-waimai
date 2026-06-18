@@ -1,0 +1,29 @@
+<view class="page">
+  <view class="page-hd">
+    <text class="page-title">订单管理</text>
+  </view>
+
+  <view class="order-list">
+    <view class="order-item" wx:for="{{orders}}" wx:key="id">
+      <view class="order-hd">
+        <text class="order-no">#{{item.orderNo}}</text>
+        <text class="order-status s{{item.status}}">{{statusText(item.status)}}</text>
+      </view>
+      <view class="order-body">
+        <text class="order-amount">¥{{item.totalPrice}}</text>
+        <text class="order-time">{{item.createTime}}</text>
+      </view>
+      <view class="order-items" wx:if="{{item.orderItemList && item.orderItemList.length}}">
+        <text class="order-item-name" wx:for="{{item.orderItemList}}" wx:for-item="oi" wx:key="productId">
+          {{oi.productName}} × {{oi.quantity}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:if="{{!orders.length}}">
+    <text>暂无订单</text>
+  </view>
+</view>
+
+<merchant-tabbar active="orders" />

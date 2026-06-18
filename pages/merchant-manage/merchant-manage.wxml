@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="page-hd">
+    <text class="page-title">店铺管理</text>
+  </view>
+
+  <view class="info-card">
+    <view class="info-row">
+      <text class="info-label">店铺名称</text>
+      <text class="info-value">{{shop.name}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">联系电话</text>
+      <text class="info-value">{{shop.phone}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">店铺描述</text>
+      <text class="info-value">{{shop.description}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">评分</text>
+      <text class="info-value">{{shop.score}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">状态</text>
+      <text class="info-value status-tag {{shop.status === 1 ? 'active' : ''}}">
+        {{shop.status === 1 ? '已激活' : '待审核'}}
+      </text>
+    </view>
+  </view>
+</view>
+
+<merchant-tabbar active="manage" />

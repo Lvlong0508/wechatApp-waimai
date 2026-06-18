@@ -1,0 +1,18 @@
+<view class="tabbar">
+  <view class="tab {{active === 'home' ? 'active' : ''}}" data-page="home" bindtap="onTap">
+    <view class="tab-icon home-icon"></view>
+    <text class="tab-label">首页</text>
+  </view>
+  <view class="tab {{active === 'goods' ? 'active' : ''}}" data-page="goods" bindtap="onTap">
+    <view class="tab-icon goods-icon"></view>
+    <text class="tab-label">商品</text>
+  </view>
+  <view class="tab {{active === 'orders' ? 'active' : ''}}" data-page="orders" bindtap="onTap">
+    <view class="tab-icon orders-icon"></view>
+    <text class="tab-label">订单</text>
+  </view>
+  <view class="tab {{active === 'manage' ? 'active' : ''}}" data-page="manage" bindtap="onTap">
+    <view class="tab-icon manage-icon"></view>
+    <text class="tab-label">管理</text>
+  </view>
+</view>

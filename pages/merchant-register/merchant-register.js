@@ -80,9 +80,9 @@ Page({
       description
     }).then(data => {
       wx.hideLoading();
-      wx.showToast({ title: '提交成功，等待审核' });
+      wx.showToast({ title: '创建成功' });
       setTimeout(() => {
-        wx.navigateBack();
+        wx.redirectTo({ url: '/pages/merchant/merchant' });
       }, 1500);
     }).catch(err => {
       wx.hideLoading();
@@ -103,10 +103,19 @@ Page({
     request('/merchant/my-shop', 'GET').then(shop => {
       wx.hideLoading();
       if (shop) {
-        wx.showToast({ title: '您已创建过店家', icon: 'none' });
-        setTimeout(() => {
-          wx.navigateBack();
-        }, 1500);
+        wx.showModal({
+          title: '已有店铺',
+          content: `您已创建店铺「${shop.name}」，无需重复注册`,
+          confirmText: '前往管理',
+          cancelText: '返回',
+          success: (res) => {
+            if (res.confirm) {
+        wx.reLaunch({ url: '/pages/merchant/merchant' });
+            } else {
+              wx.navigateBack();
+            }
+          }
+        });
       }
     }).catch(() => {
       wx.hideLoading();

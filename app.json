@@ -1,9 +1,14 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/user-index/user-index",
     "pages/address-edit/address-edit",
     "pages/address/address",
     "pages/merchant-register/merchant-register",
+    "pages/merchant/merchant",
+    "pages/merchant-goods/merchant-goods",
+    "pages/merchant-orders/merchant-orders",
+    "pages/merchant-manage/merchant-manage",
     "pages/mine/mine",
     "pages/orders/orders"
   ],
