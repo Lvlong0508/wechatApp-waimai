@@ -50,8 +50,6 @@ Page({
   chooseRegion() {
     wx.chooseLocation({
       success: (res) => {
-        // 微信 chooseLocation 返回的地址信息较简单，实际可能需要调用后端三级联动或使用 region 选择器
-        // 此处仅做示例，实际项目请替换为完整省市区选择组件
         this.setData({
           province: res.address.split(',')[0] || '',
           city: res.address.split(',')[1] || '',
@@ -84,30 +82,18 @@ Page({
       .then(() => {
         wx.showToast({ title: '保存成功' });
         setTimeout(() => {
+          const pages = getCurrentPages();
+          const prevPage = pages[pages.length - 2];
+          if (prevPage && prevPage.fetchAddressList) {
+            prevPage.fetchAddressList();
+          }
           wx.navigateBack();
         }, 1500);
       })
       .catch(err => console.error(err));
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
 
   },
 

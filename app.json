@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/user-index/user-index",
     "pages/address-edit/address-edit",
     "pages/address/address",
     "pages/merchant-register/merchant-register",
@@ -19,7 +19,7 @@
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/user-index/user-index",
         "text": "首页",
         "iconPath": "images/tab/home.png",
         "selectedIconPath": "images/tab/home-active.png"
@@ -41,5 +41,14 @@
   "style": "v2",
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取位置用于选择收货地址"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ]
 }

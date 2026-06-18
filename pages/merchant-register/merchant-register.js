@@ -32,28 +32,32 @@ Page({
 
   // 【API】上传图片
   uploadFile(filePath) {
-    const shopId = this.data.shopId;
     wx.showLoading({ title: '上传中' });
     wx.uploadFile({
-      url: getApp().globalData.baseUrl + '/upload/shoplogo/${shopId}',   // 【API】文件上传接口
+      url: getApp().globalData.baseUrl + '/upload/temp-shoplogo',   // 【API】文件上传接口
       filePath,
       name: 'file',
       header: {
         'satoken': getApp().globalData.token
       },
       success: (res) => {
-        const data = JSON.parse(res.data);
-        if (data.code === 200) {
-          this.setData({ logoUrl: data.data.url });   // 假设返回图片url
-        } else {
-          wx.showToast({ title: '上传失败', icon: 'none' });
+        wx.hideLoading();
+        try {
+          const data = typeof res.data === 'string' ? JSON.parse(res.data) : res.data;
+          if (data.code === 200 && data.data && data.data.url) {
+            this.setData({ logoUrl: data.data.url });
+          } else {
+            wx.showToast({ title: data.msg || '上传失败', icon: 'none' });
+          }
+        } catch (err) {
+          console.error('上传响应解析失败', res.data, err);
+          wx.showToast({ title: '上传响应异常', icon: 'none' });
         }
       },
-      fail: () => {
-        wx.showToast({ title: '网络异常', icon: 'none' });
-      },
-      complete: () => {
+      fail: (err) => {
         wx.hideLoading();
+        console.error('上传网络错误', err);
+        wx.showToast({ title: '网络异常', icon: 'none' });
       }
     });
   },
@@ -66,6 +70,8 @@ Page({
       return;
     }
 
+    wx.showLoading({ title: '提交中' });
+
     // 【API】提交商家注册申请
     request('/merchant/register', 'POST', {
       shopName,
@@ -73,11 +79,14 @@ Page({
       phone,
       description
     }).then(data => {
+      wx.hideLoading();
       wx.showToast({ title: '提交成功，等待审核' });
       setTimeout(() => {
         wx.navigateBack();
       }, 1500);
     }).catch(err => {
+      wx.hideLoading();
+      wx.showToast({ title: '提交失败，请重试', icon: 'none' });
       console.error(err);
     });
   },
@@ -86,7 +95,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.checkExistingShop();
+  },
 
+  checkExistingShop() {
+    wx.showLoading({ title: '检测中' });
+    request('/merchant/my-shop', 'GET').then(shop => {
+      wx.hideLoading();
+      if (shop) {
+        wx.showToast({ title: '您已创建过店家', icon: 'none' });
+        setTimeout(() => {
+          wx.navigateBack();
+        }, 1500);
+      }
+    }).catch(() => {
+      wx.hideLoading();
+    });
   },
 
   /**
@@ -114,7 +138,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    wx.hideLoading();
   },
 
   /**

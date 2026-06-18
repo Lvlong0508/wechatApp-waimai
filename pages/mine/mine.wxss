@@ -11,12 +11,30 @@
   align-items: center;
   margin-bottom: 20rpx;
 }
-.avatar {
-  width: 120rpx;
-  height: 120rpx;
+.avatar-btn {
+  width: 200rpx;
+  height: 200rpx;
+  padding: 0;
+  margin: 0 0 16rpx 0;
   border-radius: 50%;
-  margin-bottom: 16rpx;
-  background: #eee;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+}
+.avatar-btn::after {
+  border: none;
+}
+.avatar-btn.button-hover {
+  background: #fff;
+}
+.avatar {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background: #fff;
 }
 .user-name {
   font-size: 32rpx;

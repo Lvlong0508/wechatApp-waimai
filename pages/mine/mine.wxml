@@ -1,8 +1,10 @@
 <!--pages/mine/mine.wxml-->
 <view class="mine-container">
   <!-- 用户信息卡片 -->
-  <view class="user-card" bindtap="onAvatarTap">
-    <image class="avatar" src="{{userInfo.avatarUrl || '/images/mine/default.png'}}" mode="aspectFill" />
+  <view class="user-card">
+    <button class="avatar-btn" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image class="avatar" src="{{userInfo.avatarUrl || '/images/mine/default.png'}}" mode="aspectFill" />
+    </button>
     <view class="user-name">{{userInfo.nickName || '点击登录注册'}}</view>
   </view>
 

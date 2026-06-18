@@ -16,37 +16,19 @@ Page({
     this.setData({ userInfo: app.globalData.userInfo || {} });
     if (app.globalData.token) {
       this.fetchDefaultAddress();
-    } else {
-      wx.showModal({
-        title: '提示',
-        content: '您还未登录，是否前往登录？',
-        success: (res) => {
-          if (res.confirm) {
-            this.setData({ showAuthModal: true });
-          }
-        }
-      });
     }
   },
 
   // 空函数，用于阻止冒泡
   noop() {},
 
-  // 点击头像区
-  onAvatarTap() {
-    if (app.globalData.token) {
-      return;
-    }
-    this.setData({
-      showAuthModal: true,
-      tempAvatarUrl: '',
-      tempNickName: ''
-    });
-  },
-
-  // 微信选择头像回调
+  // 微信选择头像回调（来自用户卡片或弹框中）
   onChooseAvatar(e) {
-    this.setData({ tempAvatarUrl: e.detail.avatarUrl });
+    if (app.globalData.token) return;
+    this.setData({
+      tempAvatarUrl: e.detail.avatarUrl,
+      showAuthModal: true
+    });
   },
 
   // 昵称输入
