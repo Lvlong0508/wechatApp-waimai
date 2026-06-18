@@ -1,0 +1,21 @@
+<!--pages/orders/orders.wxml-->
+<view class="container">
+  <view class="order-list">
+    <block wx:for="{{orderList}}" wx:key="orderId">
+      <view class="order-card">
+        <view class="order-header">
+          <text class="shop-name">{{item.shopName}}</text>
+          <text class="order-status" style="color: {{item.statusColor}}">{{item.statusText}}</text>
+        </view>
+        <view class="order-body" wx:for="{{item.items}}" wx:for-item="goods" wx:key="productId">
+          <text class="goods-name">{{goods.name}} x{{goods.quantity}}</text>
+        </view>
+        <view class="order-footer">
+          <text class="total-price">¥{{item.totalPrice}}</text>
+          <text class="order-time">{{item.createTime}}</text>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{!orderList.length}}" class="empty-tip">暂无订单</view>
+  </view>
+</view>

@@ -1,0 +1,25 @@
+<!--pages/merchant-register/merchant-register.wxml-->
+<view class="container">
+  <view class="form-card">
+    <view class="form-item">
+      <text class="label">店铺名称</text>
+      <input class="input" placeholder="请输入店铺名称" value="{{shopName}}" bindinput="onInput" data-field="shopName" />
+    </view>
+    <view class="form-item">
+      <text class="label">店铺Logo</text>
+      <view class="upload-logo" bindtap="chooseLogo">
+        <image wx:if="{{logoUrl}}" class="logo-img" src="{{logoUrl}}" mode="aspectFill" />
+        <text wx:else class="upload-tip">点击上传</text>
+      </view>
+    </view>
+    <view class="form-item">
+      <text class="label">联系电话</text>
+      <input class="input" placeholder="请输入联系电话" type="number" value="{{phone}}" bindinput="onInput" data-field="phone" />
+    </view>
+    <view class="form-item">
+      <text class="label">店铺描述</text>
+      <textarea class="textarea" placeholder="请简单描述您的店铺" value="{{description}}" bindinput="onInput" data-field="description" />
+    </view>
+    <button class="submit-btn" bindtap="submitRegister">提交申请</button>
+  </view>
+</view>

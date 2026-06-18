@@ -1,0 +1,41 @@
+/**index.wxss**/
+.shop-list {
+  padding: 20rpx;
+}
+.shop-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+.shop-logo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  margin-right: 20rpx;
+}
+.shop-info {
+  flex: 1;
+}
+.shop-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+.shop-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+.shop-score {
+  font-size: 24rpx;
+  color: #ff6b00;
+}
+.empty-tip {
+  text-align: center;
+  color: #aaa;
+  margin-top: 100rpx;
+}

@@ -1,0 +1,45 @@
+/* pages/address-edit/address-edit.wxss */
+.address-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.04);
+}
+.addr-detail {
+  margin-bottom: 20rpx;
+}
+.contact {
+  font-weight: bold;
+  margin-right: 20rpx;
+}
+.full-addr {
+  color: #666;
+  font-size: 26rpx;
+  display: block;
+  margin-top: 8rpx;
+}
+.addr-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.default-tag {
+  background: #ff6b00;
+  color: #fff;
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+  margin-right: 16rpx;
+}
+.edit-btn, .delete-btn {
+  font-size: 26rpx;
+  color: #576b95;
+  margin-left: 20rpx;
+}
+.add-btn {
+  margin: 40rpx 20rpx;
+  background: #ff6b00;
+  color: #fff;
+  border-radius: 40rpx;
+}

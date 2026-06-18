@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="shop-list">
+    <block wx:for="{{shopList}}" wx:key="id">
+      <view class="shop-card" bindtap="goToShop" data-id="{{item.id}}">
+        <image class="shop-logo" src="{{item.logo}}" mode="aspectFill" />
+        <view class="shop-info">
+          <view class="shop-name">{{item.name}}</view>
+          <view class="shop-desc">{{item.description}}</view>
+          <view class="shop-score">评分：{{item.score}}</view>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{!shopList.length}}" class="empty-tip">暂无店铺</view>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+<!--pages/address-edit/address-edit.wxml-->
+<view class="container">
+  <block wx:for="{{addressList}}" wx:key="id">
+    <view class="address-card">
+      <view class="addr-detail">
+        <text class="contact">{{item.name}} {{item.phone}}</text>
+        <text class="full-addr">{{item.province}}{{item.city}}{{item.district}} {{item.detail}}</text>
+      </view>
+      <view class="addr-actions">
+        <text class="default-tag" wx:if="{{item.isDefault}}">默认</text>
+        <text class="edit-btn" bindtap="editAddress" data-id="{{item.id}}">编辑</text>
+        <text class="delete-btn" bindtap="deleteAddress" data-id="{{item.id}}">删除</text>
+      </view>
+    </view>
+  </block>
+  <view wx:if="{{!addressList.length}}" class="empty-tip">暂无地址，点击下方按钮添加</view>
+  <button class="add-btn" bindtap="addAddress">新增地址</button>
+</view>

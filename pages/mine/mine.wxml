@@ -1,0 +1,55 @@
+<!--pages/mine/mine.wxml-->
+<view class="mine-container">
+  <!-- 用户信息卡片 -->
+  <view class="user-card" bindtap="onAvatarTap">
+    <image class="avatar" src="{{userInfo.avatarUrl || '/images/mine/default.png'}}" mode="aspectFill" />
+    <view class="user-name">{{userInfo.nickName || '点击登录注册'}}</view>
+  </view>
+
+  <!-- 收货地址 -->
+  <view class="menu-card">
+    <view class="menu-item" bindtap="goToAddress">
+      <text class="menu-icon">📍</text>
+      <text class="menu-title">收货地址</text>
+      <text class="menu-desc">{{defaultAddress || '未设置'}}</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 商家入口 -->
+  <view class="menu-card">
+    <view class="menu-item" bindtap="goToMerchantRegister">
+      <text class="menu-icon">🏪</text>
+      <text class="menu-title">商家注册</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <!-- 授权登录弹框 -->
+  <view class="auth-mask" wx:if="{{showAuthModal}}" bindtap="closeAuthModal" catchtouchmove="noop">
+    <view class="auth-card" catchtap="noop">
+      <view class="auth-title">完善资料并登录</view>
+
+      <button class="avatar-picker"
+              open-type="chooseAvatar"
+              bind:chooseavatar="onChooseAvatar">
+        <image class="avatar-picker-img"
+               src="{{tempAvatarUrl || '/images/mine/default.png'}}"
+               mode="aspectFill" />
+      </button>
+      <view class="auth-tip">点击上方圆形头像选择微信头像</view>
+
+      <input class="nickname-input"
+             type="nickname"
+             value="{{tempNickName}}"
+             bindinput="onNickNameInput"
+             placeholder="请输入昵称"
+             maxlength="20" />
+
+      <view class="auth-actions">
+        <button class="auth-btn cancel" bindtap="closeAuthModal" disabled="{{submitting}}">取消</button>
+        <button class="auth-btn confirm" bindtap="submitAuth" disabled="{{submitting}}" loading="{{submitting}}">确认登录</button>
+      </view>
+    </view>
+  </view>
+</view>

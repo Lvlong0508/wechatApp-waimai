@@ -1,0 +1,35 @@
+/* pages/address-edit/address-edit.wxss */
+.form-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-top: 20rpx;
+}
+.form-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  align-items: center;
+}
+.label {
+  width: 160rpx;
+  font-size: 28rpx;
+}
+.input {
+  flex: 1;
+  font-size: 28rpx;
+}
+.region-text {
+  flex: 1;
+  color: #999;
+  font-size: 28rpx;
+}
+.switch-item {
+  justify-content: space-between;
+}
+.save-btn {
+  margin-top: 40rpx;
+  background: #ff6b00;
+  color: #fff;
+  border-radius: 40rpx;
+}
