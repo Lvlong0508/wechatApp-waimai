@@ -1,5 +1,6 @@
 project.private.config.json
 project.config.json
+sitemap.json
 node_modules/
 miniprogram_npm/
 .DS_Store
